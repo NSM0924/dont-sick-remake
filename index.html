@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+      }
+      p {
+        color: #5f6265;
+        font-family: "Noto Sans KR", sans-serif;
+        text-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+      }
+      i {
+        font-size: 20px;
+        color: #5f6265;
+        cursor: pointer;
+      }
+
+      .wrapper {
+        max-width: 440px;
+        height: 100vh;
+        margin: 0 auto;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        width: 440px;
+        height: 56px;
+        background-color: #ffffff;
+        padding: 16px;
+        position: fixed;
+        box-shadow: 0 3px 10px -7px rgb(0 0 0 / 10%);
+        z-index: 1;
+        box-sizing: border-box;
+      }
+      .logo {
+        height: 24px;
+      }
+      .main {
+        overflow-y: auto;
+        height: 100%;
+        box-sizing: border-box;
+        padding: 88px 16px 32px 16px;
+        background-color: #f2f3f5;
+      }
+      .content {
+        border-radius: 24px;
+        padding: 24px 16px;
+        background-color: #ffffff;
+        box-shadow: 0 3px 10px -3px rgb(0 0 0 / 25%);
+        margin-bottom: 24px;
+      }
+      .button {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 16px;
+        padding: 16px;
+        background-color: #f6f6f6;
+        box-shadow: 0 3px 10px -3px rgb(0 0 0 / 10%);
+        cursor: pointer;
+      }
+
+      .profile-img {
+        width: 64px;
+        height: 64px;
+        border: 4px solid #f6f6f6;
+        box-shadow: 0 3px 10px -3px rgb(0 0 0 / 25%);
+        border-radius: 50%;
+        box-sizing: border-box;
+        background-image: url(./profile.jpg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      #state-btn {
+        padding: 10px 16px;
+      }
+      .button.on {
+        background-color: #63fe91;
+        box-shadow: 0 3px 10px -3px rgb(47 255 108 / 50%);
+      }
+      .button.on p {
+        color: #ffffff;
+      }
+      .state {
+        font-weight: bold;
+        font-size: 25px;
+      }
+
+      .menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        background-color: rgb(0 0 0 / 30%);
+        width: 440px;
+        height: 100%;
+        padding-top: 56px;
+      }
+      .menu > div {
+        width: 75%;
+        height: 100%;
+        background-color: #f2f3f5;
+      }
+      .menu .button {
+        justify-content: left;
+        border-radius: 0;
+        box-shadow: 0 0 0;
+        background-color: #ffffff;
+        border-bottom: 1px solid #dddddd;
+      }
+
+      @media screen and (max-width: 439px) {
+        header {
+          width: 100%;
+        }
+        .menu {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <i
+          class="fa-solid fa-bars"
+          style="width: 17.5px; margin-right: 16px"
+          onclick="menu()"
+        ></i>
+        <img class="logo" src="./logo.png" alt="logo" />
+        <i class="fa-regular fa-bell" style="margin: 0 0 0 auto"></i>
+      </header>
+      <div class="main">
+        <div class="content">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 24px;
+            "
+          >
+            <p style="color: #474a4e; font-size: 18px">
+              <span style="font-weight: bold">나성민</span>님<br />오늘도
+              환영합니다!
+            </p>
+            <div class="profile-img"></div>
+          </div>
+          <div id="state-btn" class="button on" style="margin-bottom: 16px">
+            <p>보건실은 현재</p>
+            <p class="state">ON</p>
+          </div>
+          <div class="button" data-value="checkPaper">
+            <p>내 보건증</p>
+            <i class="fa-solid fa-angle-right"></i>
+          </div>
+        </div>
+        <div class="content">
+          <p style="color: #474a4e; font-size: 18px; margin-bottom: 16px">
+            디지텍 소식통
+          </p>
+          <div class="button" style="margin-bottom: 16px">
+            <p>오늘의 일정은 <span style="font-weight: bold">준비중</span></p>
+            <i class="fa-solid fa-angle-right"></i>
+          </div>
+          <div class="button" style="margin-bottom: 16px">
+            <p>이번달 급식표</p>
+            <i class="fa-solid fa-angle-right"></i>
+          </div>
+          <div class="button">
+            <p>디지텍통신문</p>
+            <i class="fa-solid fa-angle-right"></i>
+          </div>
+        </div>
+        <div
+          class="button"
+          style="
+            background-color: #ffffff;
+            padding: 16px 32px;
+            box-shadow: 0 3px 10px -3px rgb(0 0 0 / 25%);
+          "
+        >
+          <p>아프지말고 가이드</p>
+          <i class="fa-regular fa-circle-question"></i>
+        </div>
+      </div>
+      <div class="menu">
+        <div>
+          <div class="button">
+            <i class="fa-regular fa-user" style="margin-right: 8px"></i>
+            <p>내 정보</p>
+            <i class="fa-solid fa-angle-right" style="margin: 0 0 0 auto"></i>
+          </div>
+          <div class="button">
+            <i class="fa-solid fa-gear" style="margin-right: 8px"></i>
+            <p>설정</p>
+            <i class="fa-solid fa-angle-right" style="margin: 0 0 0 auto"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-analytics.js";
+      import {
+        getDatabase,
+        ref,
+        set,
+        onValue,
+      } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-database.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyDugiSdAbhcAv4kjvZIczRILR0cWnyoLE4",
+        authDomain: "don-t-sick.firebaseapp.com",
+        databaseURL: "https://don-t-sick-default-rtdb.firebaseio.com",
+        projectId: "don-t-sick",
+        storageBucket: "don-t-sick.appspot.com",
+        messagingSenderId: "713607862724",
+        appId: "1:713607862724:web:da0a34ab7fb651d3662c91",
+        measurementId: "G-8MF7NEXJGV",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const db = getDatabase();
+      const starCountRef = ref(db, "on_off");
+
+      let stateBtn = document.getElementById("state-btn");
+      let state = document.querySelector(".state");
+
+      if (true) {
+        stateBtn.addEventListener("click", () => {
+          if (stateBtn.classList.contains("on")) {
+            set(starCountRef, "OFF");
+          } else {
+            set(starCountRef, "ON");
+          }
+        });
+      }
+
+      onValue(starCountRef, (snapshot) => {
+        let data = snapshot.val();
+        console.log(data);
+        if (data == "ON") {
+          stateBtn.classList.add("on");
+        } else {
+          stateBtn.classList.remove("on");
+        }
+        state.textContent = data;
+      });
+    </script>
+    <script>
+      let menuDiv = document.querySelector(".menu");
+      function menu() {
+        let icon = event.target;
+        if (icon.classList.contains("fa-bars")) {
+          icon.classList.replace("fa-bars", "fa-xmark");
+          menuDiv.style.display = "block";
+        } else {
+          icon.classList.replace("fa-xmark", "fa-bars");
+          menuDiv.style.display = "none";
+        }
+      }
+
+      let button = document.querySelectorAll(".button");
+      for (let i = 0; i < button.length; i++) {
+        button[i].addEventListener("click", () => {
+          switch (button[i].dataset.value) {
+            case "checkPaper":
+              window.location.href = "/checkPaper.html";
+              break;
+
+            default:
+              break;
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
